@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Tina Koestler</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ── LOGIN ─────────────────────────────────────────── -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">TK</div>
+      <h1>Admin</h1>
+      <div id="login-error" class="login-error" style="display:none"></div>
+      <input type="email"    id="login-email"    placeholder="Email address"  autocomplete="email">
+      <input type="password" id="login-password" placeholder="Password"       autocomplete="current-password">
+      <button id="login-btn" class="btn-primary">Sign In</button>
+    </div>
+  </div>
+
+  <!-- ── DASHBOARD ─────────────────────────────────────── -->
+  <div id="dashboard" style="display:none">
+
+    <header class="admin-header">
+      <span class="admin-logo">TK Admin</span>
+      <nav class="admin-tabs">
+        <button class="tab-btn active" data-tab="availability">Availability</button>
+        <button class="tab-btn" data-tab="bookings">
+          Bookings <span id="new-badge" class="badge" style="display:none">0</span>
+        </button>
+      </nav>
+      <button id="logout-btn" class="btn-logout">Sign Out</button>
+    </header>
+
+    <!-- AVAILABILITY TAB -->
+    <div id="tab-availability" class="tab-panel">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2>Availability</h2>
+            <p>Click any date to block or unblock it. Blocked dates cannot be booked.</p>
+          </div>
+        </div>
+        <div class="admin-cal">
+          <div class="admin-cal-header">
+            <button id="cal-prev" class="cal-nav">&#8249;</button>
+            <span id="cal-label" class="cal-label"></span>
+            <button id="cal-next" class="cal-nav">&#8250;</button>
+          </div>
+          <div class="cal-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span>
+            <span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div id="cal-grid" class="cal-grid"></div>
+        </div>
+        <div class="cal-legend">
+          <span class="legend-item"><span class="legend-dot open"></span>Available</span>
+          <span class="legend-item"><span class="legend-dot blocked"></span>Blocked</span>
+          <span class="legend-item"><span class="legend-dot past"></span>Past</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKINGS TAB -->
+    <div id="tab-bookings" class="tab-panel" style="display:none">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <h2>Bookings</h2>
+          <button id="refresh-btn" class="btn-ghost">&#8635; Refresh</button>
+        </div>
+        <div id="bookings-list"><div class="loading">Loading…</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

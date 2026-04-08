@@ -1,21 +1,14 @@
 // ════════════════════════════════════════════════════
-// AVAILABLE DATES
-// Edit this array to open or close booking dates.
-// Format: "YYYY-MM-DD"
+// SUPABASE CONFIG
 // ════════════════════════════════════════════════════
-const availableDates = [
-  "2026-05-07", "2026-05-14", "2026-05-21",
-  "2026-06-04", "2026-06-11", "2026-06-18",
-  "2026-07-02", "2026-07-09", "2026-07-16",
-  "2026-08-06", "2026-08-13", "2026-08-20",
-  "2026-09-03", "2026-09-10", "2026-09-17",
-  "2026-10-01", "2026-10-08", "2026-10-15"
-];
+const SUPABASE_URL = 'https://nisapebptuqykfaootju.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pc2FwZWJwdHVxeWtmYW9vdGp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NTY5MjIsImV4cCI6MjA5MTIzMjkyMn0.CGoiEPcWWs7OSkJfCoBuFS6vvmOe98LDpRC1mGDImgA';
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ── Section-aware nav ──────────────────────────────
 const nav = document.getElementById('main-nav');
 
-// Maps section IDs to nav style classes
 const NAV_SECTION_STYLE = {
   'hero':         'nav-hero',
   'pricing':      'nav-bg-brown',
@@ -32,7 +25,6 @@ function applyNavSection(sectionId) {
   nav.classList.add(cls);
 }
 
-// Scroll-based nav: find whichever section's top is just above the nav bar
 const navSections = Array.from(document.querySelectorAll('section[id]'));
 
 function updateNavFromScroll() {
@@ -91,7 +83,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// ── Date picker factory ──────────────────────────────
+// ── Date picker ──────────────────────────────────────
 const MONTHS   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const WEEKDAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
@@ -100,20 +92,31 @@ const STRIPE_LINKS = {
   5: 'https://book.stripe.com/cNi5kC32114k1Bz4cZ5wI00'
 };
 
+// Blocked dates loaded from Supabase (set of "YYYY-MM-DD" strings)
+let blockedDates = new Set();
+
+function dpPad(n) { return String(n).padStart(2, '0'); }
+
+// Returns true if all days in [startDate, startDate + days - 1] are not blocked and not in the past
+function rangeAvailable(startStr, days) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  for (let i = 0; i < days; i++) {
+    const d = new Date(startStr + 'T00:00:00');
+    d.setDate(d.getDate() + i);
+    if (d < today) return false;
+    const ds = `${d.getFullYear()}-${dpPad(d.getMonth()+1)}-${dpPad(d.getDate())}`;
+    if (blockedDates.has(ds)) return false;
+  }
+  return true;
+}
+
 function createCalendar(ids) {
-  // ids: { prev, next, label, grid, info, durContainer, stripeBtn (optional) }
   let selected = null;
   let duration = 3;
-  let month, year;
-
-  if (availableDates.length) {
-    const first = new Date(availableDates[0]);
-    month = first.getMonth();
-    year  = first.getFullYear();
-  } else {
-    month = new Date().getMonth();
-    year  = new Date().getFullYear();
-  }
+  const today  = new Date();
+  let month    = today.getMonth();
+  let year     = today.getFullYear();
 
   function render() {
     const label = document.getElementById(ids.label);
@@ -140,37 +143,39 @@ function createCalendar(ids) {
     }
 
     for (let d = 1; d <= daysInMonth; d++) {
-      const ds    = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-      const avail = availableDates.includes(ds);
+      const ds    = `${year}-${dpPad(month+1)}-${dpPad(d)}`;
+      const avail = rangeAvailable(ds, duration);
       const el    = document.createElement('div');
       el.className = 'dp-day' + (avail ? ' available' : '');
       el.textContent = d;
 
       if (selected) {
-        const start = new Date(selected);
-        const end   = new Date(selected);
+        const start = new Date(selected + 'T00:00:00');
+        const end   = new Date(selected + 'T00:00:00');
         end.setDate(end.getDate() + duration - 1);
-        const cur = new Date(ds);
+        const cur = new Date(ds + 'T00:00:00');
         if (ds === selected)                              el.classList.add('selected');
         else if (cur > start && cur < end)                el.classList.add('in-range');
         else if (cur.toDateString() === end.toDateString()) el.classList.add('end-date');
       }
 
       if (avail) el.addEventListener('click', () => {
-        selected = ds; render();
+        selected = ds;
+        render();
         if (ids.onSelect) ids.onSelect(selected, duration);
       });
+
       grid.appendChild(el);
     }
 
     if (selected) {
-      const s = new Date(selected);
-      const e = new Date(selected);
+      const s = new Date(selected + 'T00:00:00');
+      const e = new Date(selected + 'T00:00:00');
       e.setDate(e.getDate() + duration - 1);
       info.textContent =
-        s.toLocaleDateString('en-GB', {day:'numeric', month:'short'}) +
+        s.toLocaleDateString('en-GB', { day:'numeric', month:'short' }) +
         ' → ' +
-        e.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
+        e.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
     } else {
       info.textContent = 'Select an available date to begin';
     }
@@ -204,18 +209,18 @@ function createCalendar(ids) {
       durBtns.forEach(b => b.classList.toggle('active', parseInt(b.dataset.days) === d));
       render();
     },
-    getSelected() { return { date: selected, duration }; }
+    getSelected() { return { date: selected, duration }; },
+    refresh() { render(); }
   };
 }
 
-// Booking section calendar
-createCalendar({
+// Initialise calendars (rendered immediately, refreshed once blocked dates load)
+const mainCal = createCalendar({
   prev: 'dp-prev', next: 'dp-next',
   label: 'dp-month-label', grid: 'dp-grid', info: 'dp-info',
   durContainer: 'booking-dur'
 });
 
-// Modal calendar
 const modalCal = createCalendar({
   prev: 'modal-dp-prev', next: 'modal-dp-next',
   label: 'modal-dp-month-label', grid: 'modal-dp-grid', info: 'modal-dp-info',
@@ -223,9 +228,21 @@ const modalCal = createCalendar({
   onSelect: () => { document.getElementById('dp-step1-next').disabled = false; }
 });
 
+// Load blocked dates from Supabase, then re-render calendars
+(async () => {
+  const { data, error } = await sb.from('blocked_dates').select('date');
+  if (!error && data) {
+    blockedDates = new Set(data.map(d => d.date));
+    mainCal.refresh();
+    modalCal.refresh();
+    // Reset modal "next" button in case selected date is now blocked
+    document.getElementById('dp-step1-next').disabled = true;
+  }
+})();
+
 // ── Modal step navigation ────────────────────────────
-const dpModal  = document.getElementById('dp-modal');
-const dpSteps  = [
+const dpModal = document.getElementById('dp-modal');
+const dpSteps = [
   document.getElementById('dp-step-1'),
   document.getElementById('dp-step-2'),
   document.getElementById('dp-step-3')
@@ -236,10 +253,9 @@ function showDpStep(n) {
   dpModal.querySelector('.dp-modal-card').scrollTop = 0;
 }
 
-// Open modal from pricing buttons
 document.querySelectorAll('.open-dp-modal').forEach(btn => {
   btn.addEventListener('click', () => {
-    const days = parseInt(btn.dataset.days);
+    const days  = parseInt(btn.dataset.days);
     const label = days === 3 ? '3-Day Immersion' : '5-Day Immersion';
     modalCal.setDuration(days);
     document.getElementById('dp-step1-next').disabled = true;
@@ -254,28 +270,75 @@ document.querySelectorAll('.open-dp-modal').forEach(btn => {
 document.getElementById('dp-step1-next').addEventListener('click', () => {
   const { date, duration } = modalCal.getSelected();
   const label = duration === 3 ? '3-Day Immersion' : '5-Day Immersion';
-  const dateFormatted = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-  document.getElementById('dp-step2-label').textContent      = label;
-  document.getElementById('modal-hidden-package').value      = label;
-  document.getElementById('modal-hidden-date').value         = dateFormatted;
+  const dateFormatted = new Date(date + 'T00:00:00').toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  document.getElementById('dp-step2-label').textContent = label;
+  document.getElementById('modal-hidden-package').value = label;
+  document.getElementById('modal-hidden-date').value    = dateFormatted;
   showDpStep(1);
 });
 
 // Step 2 → Step 1 (back)
 document.getElementById('dp-step2-back').addEventListener('click', () => showDpStep(0));
 
-// Step 2 form submission
+// ── Modal form → save to Supabase ────────────────────
 const modalForm = document.getElementById('modal-inquiry-form');
 let dpModalCompleted = false;
 
 modalForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const data = new FormData(modalForm);
-  try {
-    const res = await fetch(modalForm.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-    if (res.ok) { dpModalCompleted = true; modalForm.reset(); showDpStep(2); }
-    else { alert('Something went wrong. Please email Tina directly at koestler.tina@gmail.com'); }
-  } catch { alert('Something went wrong. Please email Tina directly at koestler.tina@gmail.com'); }
+
+  const fd       = new FormData(modalForm);
+  const pkg      = fd.get('Package') || '';
+  const duration = pkg.startsWith('3') ? 3 : 5;
+
+  // Parse the date back to ISO format
+  const rawDate  = document.getElementById('modal-hidden-date').value;
+  const dateObj  = new Date(rawDate);
+  const isoDate  = isNaN(dateObj)
+    ? null
+    : `${dateObj.getFullYear()}-${dpPad(dateObj.getMonth()+1)}-${dpPad(dateObj.getDate())}`;
+
+  // Collect hotel selections
+  const hotels = ['Le Méridien Vienna','Almanac Palais Vienna','The Ritz-Carlton, Vienna','No accommodation needed']
+    .filter(h => fd.get('Hotel') === h || modalForm.querySelectorAll(`[name="Hotel"]:checked`))
+    .map(h => {
+      const cb = modalForm.querySelector(`[name="Hotel"][value="${h}"]`);
+      return (cb && cb.checked) ? h : null;
+    })
+    .filter(Boolean)
+    .join(', ');
+
+  const booking = {
+    names:             fd.get('Names')        || '',
+    email:             fd.get('email')        || '',
+    package:           pkg,
+    duration_days:     duration,
+    start_date:        isoDate,
+    location:          fd.get('Location')     || '',
+    intention:         fd.get('Intention')    || '',
+    experience:        fd.get('Experience')   || '',
+    photography_addon: modalForm.querySelector('[name="Photography Add-On"]')?.checked || false,
+    hotel:             hotels || '',
+    notes:             fd.get('Notes')        || '',
+    status:            'new'
+  };
+
+  const submitBtn = modalForm.querySelector('[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+
+  const { error } = await sb.from('bookings').insert(booking);
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Send Inquiry';
+
+  if (!error) {
+    dpModalCompleted = true;
+    modalForm.reset();
+    showDpStep(2);
+  } else {
+    alert('Something went wrong. Please email Tina directly at koestler.tina@gmail.com');
+  }
 });
 
 // Step 3 close
@@ -288,11 +351,11 @@ function sendPartialCapture() {
   if (!email) return;
 
   const data = new FormData();
-  data.append('_subject',           'Abandoned Inquiry');
-  data.append('Status',             'Abandoned — form not completed');
-  data.append('email',              email);
-  const pkg  = document.getElementById('modal-hidden-package').value;
-  const date = document.getElementById('modal-hidden-date').value;
+  data.append('_subject', 'Abandoned Inquiry');
+  data.append('Status',   'Abandoned — form not completed');
+  data.append('email',    email);
+  const pkg   = document.getElementById('modal-hidden-package').value;
+  const date  = document.getElementById('modal-hidden-date').value;
   const names = modalForm.querySelector('[name="Names"]').value.trim();
   if (pkg)   data.append('Package',              pkg);
   if (date)  data.append('Preferred Start Date', date);
@@ -307,13 +370,12 @@ function closeModal() {
   dpModalCompleted = false;
 }
 
-// Close on overlay click or × button
 dpModal.addEventListener('click', (e) => { if (e.target === dpModal) closeModal(); });
 document.getElementById('dp-modal-close').addEventListener('click', closeModal);
 
-// ── Inquiry form submission ──────────────────────────
-const form      = document.getElementById('inquiry-form');
-const modal     = document.getElementById('form-modal');
+// ── Inquiry form (bottom) → stays on Formspree ──────
+const form  = document.getElementById('inquiry-form');
+const modal = document.getElementById('form-modal');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -335,13 +397,12 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-// Close modal on overlay click
 modal.addEventListener('click', (e) => {
   if (e.target === modal) modal.classList.remove('open');
 });
 
-// ── Journey toggle ─────────────────────────────────────
-const journeyBtns = document.querySelectorAll('#journey-toggle button');
+// ── Journey toggle ───────────────────────────────────
+const journeyBtns   = document.querySelectorAll('#journey-toggle button');
 const timelineItems = document.querySelectorAll('.timeline-item');
 
 function updateJourney(days) {
@@ -350,9 +411,7 @@ function updateJourney(days) {
     item.style.display = (show === 'both' || show === String(days)) ? '' : 'none';
   });
   const note = document.querySelector('.timeline-note');
-  if (note) {
-    note.style.display = days === 3 ? 'none' : '';
-  }
+  if (note) note.style.display = days === 3 ? 'none' : '';
 }
 
 journeyBtns.forEach(btn => {
@@ -363,7 +422,6 @@ journeyBtns.forEach(btn => {
   });
 });
 
-// Default to 5-day view
 updateJourney(5);
 
 // ── Photo carousel ──────────────────────────────────
@@ -383,7 +441,6 @@ if (carouselTrack) {
   document.getElementById('carousel-next').addEventListener('click', () => goTo(current + 1));
   dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-  // Auto-advance every 5 seconds
   setInterval(() => goTo(current + 1), 5000);
 }
 
