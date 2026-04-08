@@ -1,43 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#1a1613" rx="8"/>
-  <path d="M14,14 L36,14 L36,1 L64,1 L64,14 L86,14 L86,36 L99,36 L99,64 L86,64 L86,86 L64,86 L64,99 L36,99 L36,86 L14,86 L14,64 L1,64 L1,36 L14,36 Z" fill="none" stroke="#C4A287" stroke-width="1.4"/>
-  <rect x="18" y="18" width="64" height="64" fill="none" stroke="#C4A287" stroke-width="0.7"/>
-  <rect x="22" y="22" width="56" height="56" fill="none" stroke="#C4A287" stroke-width="0.5"/>
-  <circle cx="50" cy="50" r="36.5" fill="none" stroke="#C4A287" stroke-width="2.5"/>
-  <circle cx="50" cy="50" r="33"   fill="none" stroke="#C4A287" stroke-width="0.8"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(22.5,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(45,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(67.5,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(90,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(112.5,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(135,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(157.5,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(180,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(202.5,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(225,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(247.5,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(270,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(292.5,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(315,50,50)"/>
-  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#C4A287" stroke-width="0.65" transform="rotate(337.5,50,50)"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6" transform="rotate(45,50,50)"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6" transform="rotate(90,50,50)"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6" transform="rotate(135,50,50)"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6" transform="rotate(180,50,50)"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6" transform="rotate(225,50,50)"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6" transform="rotate(270,50,50)"/>
-  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#C4A287" stroke-width="0.6" transform="rotate(315,50,50)"/>
-  <circle cx="50" cy="50" r="17" fill="none" stroke="#C4A287" stroke-width="0.5"/>
-  <polygon points="50,67 35,40 65,40" fill="none" stroke="#C4A287" stroke-width="0.85"/>
-  <polygon points="50,33 35,60 65,60" fill="none" stroke="#C4A287" stroke-width="0.85"/>
-  <polygon points="50,63 38,43 62,43" fill="none" stroke="#C4A287" stroke-width="0.75"/>
-  <polygon points="50,37 38,57 62,57" fill="none" stroke="#C4A287" stroke-width="0.75"/>
-  <polygon points="50,60 41,46 59,46" fill="none" stroke="#C4A287" stroke-width="0.65"/>
-  <polygon points="50,40 41,54 59,54" fill="none" stroke="#C4A287" stroke-width="0.65"/>
-  <polygon points="50,57 44,48.5 56,48.5" fill="none" stroke="#C4A287" stroke-width="0.55"/>
-  <polygon points="50,43 44,51.5 56,51.5" fill="none" stroke="#C4A287" stroke-width="0.55"/>
-  <polygon points="50,54 46.5,50 53.5,50" fill="none" stroke="#C4A287" stroke-width="0.5"/>
-  <circle cx="50" cy="50" r="1.8" fill="#C4A287"/>
+  <rect width="100" height="100" fill="#f5f0ea" rx="8"/>
+  <path d="M14,14 L36,14 L36,1 L64,1 L64,14 L86,14 L86,36 L99,36 L99,64 L86,64 L86,86 L64,86 L64,99 L36,99 L36,86 L14,86 L14,64 L1,64 L1,36 L14,36 Z" fill="none" stroke="#8B1A1A" stroke-width="1.4"/>
+  <rect x="18" y="18" width="64" height="64" fill="none" stroke="#8B1A1A" stroke-width="0.7"/>
+  <rect x="22" y="22" width="56" height="56" fill="none" stroke="#8B1A1A" stroke-width="0.5"/>
+  <circle cx="50" cy="50" r="36.5" fill="none" stroke="#8B1A1A" stroke-width="2.5"/>
+  <circle cx="50" cy="50" r="33"   fill="none" stroke="#8B1A1A" stroke-width="0.8"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(22.5,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(45,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(67.5,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(90,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(112.5,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(135,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(157.5,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(180,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(202.5,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(225,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(247.5,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(270,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(292.5,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(315,50,50)"/>
+  <path d="M50,18 C53.5,20.5 53.5,23.5 50,26 C46.5,23.5 46.5,20.5 50,18 Z" fill="none" stroke="#8B1A1A" stroke-width="0.65" transform="rotate(337.5,50,50)"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6" transform="rotate(45,50,50)"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6" transform="rotate(90,50,50)"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6" transform="rotate(135,50,50)"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6" transform="rotate(180,50,50)"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6" transform="rotate(225,50,50)"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6" transform="rotate(270,50,50)"/>
+  <path d="M50,26 C52.5,28 52.5,30.5 50,32.5 C47.5,30.5 47.5,28 50,26 Z" fill="none" stroke="#8B1A1A" stroke-width="0.6" transform="rotate(315,50,50)"/>
+  <circle cx="50" cy="50" r="17" fill="none" stroke="#8B1A1A" stroke-width="0.5"/>
+  <polygon points="50,67 35,40 65,40" fill="none" stroke="#8B1A1A" stroke-width="0.85"/>
+  <polygon points="50,33 35,60 65,60" fill="none" stroke="#8B1A1A" stroke-width="0.85"/>
+  <polygon points="50,63 38,43 62,43" fill="none" stroke="#8B1A1A" stroke-width="0.75"/>
+  <polygon points="50,37 38,57 62,57" fill="none" stroke="#8B1A1A" stroke-width="0.75"/>
+  <polygon points="50,60 41,46 59,46" fill="none" stroke="#8B1A1A" stroke-width="0.65"/>
+  <polygon points="50,40 41,54 59,54" fill="none" stroke="#8B1A1A" stroke-width="0.65"/>
+  <polygon points="50,57 44,48.5 56,48.5" fill="none" stroke="#8B1A1A" stroke-width="0.55"/>
+  <polygon points="50,43 44,51.5 56,51.5" fill="none" stroke="#8B1A1A" stroke-width="0.55"/>
+  <polygon points="50,54 46.5,50 53.5,50" fill="none" stroke="#8B1A1A" stroke-width="0.5"/>
+  <circle cx="50" cy="50" r="1.8" fill="#8B1A1A"/>
 </svg>
