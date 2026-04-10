@@ -433,7 +433,8 @@ if (carouselTrack) {
 
   function goTo(n) {
     current = (n + total) % total;
-    carouselTrack.style.transform = `translateX(-${current * 100}%)`;
+    const slideWidth = carouselTrack.parentElement.offsetWidth;
+    carouselTrack.style.transform = `translateX(-${current * slideWidth}px)`;
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
   }
 

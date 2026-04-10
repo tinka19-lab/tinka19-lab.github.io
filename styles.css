@@ -95,8 +95,12 @@ h3 { font-size: 24px; font-weight: 600; line-height: 1.4; }
 section { padding: 120px 0; }
 
 @media (max-width: 768px) {
-  section { padding: 72px 0; }
-  .container, .container-narrow { padding: 0 24px; }
+  section { padding: 64px 0; }
+  .container, .container-narrow { padding: 0 20px; }
+}
+@media (max-width: 400px) {
+  section { padding: 48px 0; }
+  .container, .container-narrow { padding: 0 16px; }
 }
 
 /* ── Reveal ── */
@@ -365,8 +369,15 @@ nav#main-nav.scrolled .goog-te-gadget select {
   nav#main-nav.nav-bg-experience,
   nav#main-nav.nav-bg-hotels { padding: 12px 24px; }
   nav#main-nav.nav-hero { padding: 16px 24px; }
+  nav#main-nav.nav-hero .nav-mark { width: 56px; height: 56px; }
+  nav#main-nav.nav-hero .nav-logo-name { font-size: 22px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
+}
+@media (max-width: 400px) {
+  nav#main-nav.nav-hero .nav-mark { width: 44px; height: 44px; }
+  nav#main-nav.nav-hero .nav-logo-name { font-size: 18px; }
+  .nav-logo-tagline { display: none; }
 }
 
 /* ════════════════════════════════════════
@@ -412,6 +423,13 @@ nav#main-nav.scrolled .goog-te-gadget select {
   max-width: 520px;
   margin: 0 auto 44px;
   line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .hero-subhead { font-size: 16px; margin-bottom: 32px; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
 }
 
 .hero-buttons {
@@ -559,6 +577,9 @@ nav#main-nav.scrolled .goog-te-gadget select {
 @media (max-width: 900px) {
   .timeline-item { grid-template-columns: 1fr; gap: 32px; }
   .timeline-item.reverse .timeline-image { order: 0; }
+  .timeline { gap: 56px; }
+  .experience-header { margin-bottom: 56px; }
+  .day-number { font-size: 48px; }
 }
 
 /* ════════════════════════════════════════
@@ -803,7 +824,8 @@ nav#main-nav.scrolled .goog-te-gadget select {
 }
 
 .carousel-track img {
-  min-width: 100%;
+  width: 100%;
+  flex-shrink: 0;
   max-height: 620px;
   object-fit: cover;
   display: block;
@@ -1235,7 +1257,10 @@ nav#main-nav.scrolled .goog-te-gadget select {
 
 @media (max-width: 768px) {
   .booking-options { grid-template-columns: 1fr; gap: 24px; }
+  .booking-option { padding: 32px 24px; }
   .form-row { grid-template-columns: 1fr; }
+  .dp-modal-card { padding: 40px 24px 32px; width: 100%; border-radius: 0; max-height: 100vh; }
+  .form-modal-overlay.open { align-items: flex-end; }
 }
 
 /* ════════════════════════════════════════
@@ -1412,4 +1437,16 @@ footer {
 .modal-x:hover { color: var(--brown-dark); }
 
 @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; } }
-@media (max-width: 600px) { .footer-top { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-logo-img { width: 160px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 640px) {
+  .pricing-card { padding: 28px 20px; }
+  .pricing-price { font-size: 34px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 20px; }
+  .pull-quote { font-size: 17px; }
+  .testimonial-card { padding: 28px 24px; }
+}
