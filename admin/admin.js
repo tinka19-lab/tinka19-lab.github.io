@@ -99,6 +99,9 @@ async function showDashboard() {
   await Promise.all([loadBlockedDates(), loadBookings()])
   renderAdminCal()
   renderBookings()
+
+  const hash = window.location.hash.replace('#', '')
+  if (['availability', 'bookings', 'content'].includes(hash)) switchTab(hash)
 }
 
 function switchTab(tab) {
@@ -108,6 +111,8 @@ function switchTab(tab) {
   document.getElementById('tab-availability').style.display = tab === 'availability' ? '' : 'none'
   document.getElementById('tab-bookings').style.display     = tab === 'bookings'     ? '' : 'none'
   document.getElementById('tab-content').style.display      = tab === 'content'      ? '' : 'none'
+
+  window.location.hash = tab
 
   if (tab === 'content' && !contentLoaded) {
     contentLoaded = true
