@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1/dist/cropper.min.css">
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
@@ -94,7 +95,27 @@
 
   </div>
 
+  <!-- Crop modal -->
+  <div id="crop-modal" class="crop-modal-overlay">
+    <div class="crop-modal-card">
+      <div class="crop-modal-header">
+        <div>
+          <h3>Crop Photo</h3>
+          <p>Drag to reposition · Scroll or pinch to zoom · Fixed 4:3 ratio</p>
+        </div>
+      </div>
+      <div class="crop-container">
+        <img id="crop-image" src="" alt="">
+      </div>
+      <div class="crop-actions">
+        <button class="btn-ghost" id="crop-cancel">Cancel</button>
+        <button class="btn-primary" id="crop-apply">Apply Crop &amp; Upload</button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1/dist/cropper.min.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>

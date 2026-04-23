@@ -478,45 +478,86 @@ function attachDayCard(dayId) {
   })
 }
 
-async function handlePhotoFile(dayId, file) {
-  // Immediate preview
+// ── Crop modal ─────────────────────────────────────────────────
+let cropperInstance = null
+let cropDayId       = null
+let cropFileExt     = 'jpg'
+
+function handlePhotoFile(dayId, file) {
+  cropDayId   = dayId
+  cropFileExt = (file.name.split('.').pop() || 'jpg').toLowerCase()
+
   const reader = new FileReader()
   reader.onload = e => {
-    let preview = document.getElementById(`preview-${dayId}`)
+    const cropImg = document.getElementById('crop-image')
+    // Destroy previous cropper before changing src
+    if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null }
+    cropImg.src = e.target.result
+    cropImg.onload = () => {
+      cropperInstance = new Cropper(cropImg, {
+        aspectRatio: 4 / 3,
+        viewMode:    1,
+        dragMode:    'move',
+        autoCropArea: 0.9,
+        responsive:  true,
+      })
+    }
+    document.getElementById('crop-modal').classList.add('open')
+  }
+  reader.readAsDataURL(file)
+}
+
+document.getElementById('crop-cancel').addEventListener('click', () => {
+  document.getElementById('crop-modal').classList.remove('open')
+})
+
+document.getElementById('crop-apply').addEventListener('click', async () => {
+  if (!cropperInstance || !cropDayId) return
+
+  const applyBtn = document.getElementById('crop-apply')
+  applyBtn.disabled    = true
+  applyBtn.textContent = 'Uploading…'
+
+  const canvas = cropperInstance.getCroppedCanvas({ width: 1200, height: 900 })
+
+  canvas.toBlob(async blob => {
+    const path = `${cropDayId}.${cropFileExt}`
+
+    const { error } = await sb.storage
+      .from('experience-photos')
+      .upload(path, blob, { upsert: true, contentType: `image/${cropFileExt === 'jpg' ? 'jpeg' : cropFileExt}` })
+
+    applyBtn.disabled    = false
+    applyBtn.textContent = 'Apply Crop & Upload'
+
+    if (error) {
+      alert('Upload failed — please try again.')
+      return
+    }
+
+    const { data: urlData } = sb.storage.from('experience-photos').getPublicUrl(path)
+    pendingPhotos[cropDayId] = urlData.publicUrl
+
+    // Update preview in the day card
+    let preview = document.getElementById(`preview-${cropDayId}`)
     if (preview.tagName !== 'IMG') {
       const img = document.createElement('img')
       img.className = 'photo-preview'
-      img.id = `preview-${dayId}`
+      img.id        = `preview-${cropDayId}`
       preview.replaceWith(img)
       preview = img
     }
-    preview.src = e.target.result
-  }
-  reader.readAsDataURL(file)
+    preview.src = canvas.toDataURL()
 
-  // Upload to Supabase Storage
-  const status = document.getElementById(`photo-status-${dayId}`)
-  status.textContent = 'Uploading…'
-  status.style.color = 'var(--text-muted)'
+    const status = document.getElementById(`photo-status-${cropDayId}`)
+    if (status) {
+      status.textContent = '✓ Photo cropped & ready — click Save Changes to apply.'
+      status.style.color = 'var(--sage)'
+    }
 
-  const ext  = (file.name.split('.').pop() || 'jpg').toLowerCase()
-  const path = `${dayId}.${ext}`
-
-  const { error } = await sb.storage
-    .from('experience-photos')
-    .upload(path, file, { upsert: true })
-
-  if (error) {
-    status.textContent = 'Upload failed — try again.'
-    status.style.color = 'var(--terracotta)'
-    return
-  }
-
-  const { data: urlData } = sb.storage.from('experience-photos').getPublicUrl(path)
-  pendingPhotos[dayId]    = urlData.publicUrl
-  status.textContent      = '✓ Photo ready — click Save Changes to apply.'
-  status.style.color      = 'var(--sage)'
-}
+    document.getElementById('crop-modal').classList.remove('open')
+  }, `image/${cropFileExt === 'jpg' ? 'jpeg' : cropFileExt}`, 0.92)
+})
 
 function addParagraph(dayId) {
   const list = document.getElementById(`paras-${dayId}`)

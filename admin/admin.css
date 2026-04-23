@@ -724,6 +724,56 @@ body {
   border-top: 1px solid var(--border);
 }
 
+/* ── CROP MODAL ─────────────────────────────────── */
+.crop-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.crop-modal-overlay.open { display: flex; }
+
+.crop-modal-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.crop-modal-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.crop-modal-header p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.crop-container {
+  max-height: 55vh;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #000;
+}
+.crop-container img { display: block; max-width: 100%; }
+
+.crop-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 /* ── MOBILE ─────────────────────────────────────── */
 @media (max-width: 680px) {
   .booking-row {
