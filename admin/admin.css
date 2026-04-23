@@ -525,6 +525,205 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* ── CONTENT TAB ────────────────────────────────── */
+.content-section {
+  margin-bottom: 48px;
+}
+
+.content-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: var(--sand);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.day-card {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.day-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.day-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  background: rgba(181,96,58,0.12);
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.day-card-title-preview {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--cream);
+}
+
+.day-card-body {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.content-field > label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.content-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.content-input:focus { border-color: var(--sand); }
+
+.paragraphs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.para-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.para-textarea {
+  flex: 1;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.para-textarea:focus { border-color: var(--sand); }
+.para-textarea::placeholder { color: var(--text-muted); }
+
+.para-remove {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.15s;
+}
+.para-remove:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+.btn-add-para {
+  width: 100%;
+  background: none;
+  border: 1px dashed rgba(255,255,255,0.12);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-add-para:hover { border-color: var(--sage); color: var(--sage); }
+
+.photo-drop-zone {
+  border: 2px dashed rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-height: 100px;
+}
+.photo-drop-zone:hover,
+.photo-drop-zone.drag-over {
+  border-color: var(--sand);
+  background: rgba(201,185,154,0.04);
+}
+
+.photo-preview {
+  width: 100%;
+  max-width: 320px;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.photo-placeholder {
+  width: 80px;
+  height: 56px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.drop-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.photo-status {
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 18px;
+}
+
+.day-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
 /* ── MOBILE ─────────────────────────────────────── */
 @media (max-width: 680px) {
   .booking-row {

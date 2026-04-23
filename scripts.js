@@ -402,11 +402,12 @@ modal.addEventListener('click', (e) => {
 });
 
 // ── Journey toggle ───────────────────────────────────
-const journeyBtns   = document.querySelectorAll('#journey-toggle button');
-const timelineItems = document.querySelectorAll('.timeline-item');
+const journeyBtns    = document.querySelectorAll('#journey-toggle button');
+let currentJourneyDays = 5;
 
 function updateJourney(days) {
-  timelineItems.forEach(item => {
+  currentJourneyDays = days;
+  document.querySelectorAll('.timeline-item').forEach(item => {
     const show = item.dataset.show || 'both';
     item.style.display = (show === 'both' || show === String(days)) ? '' : 'none';
   });
@@ -423,6 +424,49 @@ journeyBtns.forEach(btn => {
 });
 
 updateJourney(5);
+
+// ── Experience Timeline (dynamic from Supabase) ──────
+function escHtml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderExperienceTimeline(days) {
+  const container = document.getElementById('experience-timeline');
+  if (!container || !days.length) return;
+
+  container.innerHTML = days
+    .sort((a, b) => a.sort_order - b.sort_order)
+    .map(day => {
+      const reverse = day.day_number % 2 === 0;
+      const num     = String(day.day_number).padStart(2, '0');
+      const paras   = (day.paragraphs || []).map(p => `<p>${escHtml(p)}</p>`).join('');
+      const imgHtml = day.photo_url
+        ? `<img src="${escHtml(day.photo_url)}" alt="${escHtml(day.photo_alt || '')}" loading="lazy">`
+        : '';
+      return `
+        <div class="timeline-item ${reverse ? 'reverse' : ''} reveal" data-day="${day.day_number}" data-show="${day.show_for}">
+          <div class="timeline-text">
+            <div class="day-number">${num}</div>
+            <div class="day-title">${escHtml(day.title)}</div>
+            ${paras}
+          </div>
+          <div class="timeline-image">${imgHtml}</div>
+        </div>`;
+    }).join('');
+
+  container.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  updateJourney(currentJourneyDays);
+}
+
+(async () => {
+  const { data, error } = await sb
+    .from('experience_days')
+    .select('*')
+    .order('sort_order');
+  if (!error && data && data.length) renderExperienceTimeline(data);
+})();
 
 // ── Photo carousel ──────────────────────────────────
 const carouselTrack = document.getElementById('carousel-track');

@@ -107,6 +107,12 @@ function switchTab(tab) {
   )
   document.getElementById('tab-availability').style.display = tab === 'availability' ? '' : 'none'
   document.getElementById('tab-bookings').style.display     = tab === 'bookings'     ? '' : 'none'
+  document.getElementById('tab-content').style.display      = tab === 'content'      ? '' : 'none'
+
+  if (tab === 'content' && !contentLoaded) {
+    contentLoaded = true
+    loadContentDays().then(renderContentTab)
+  }
 }
 
 // ── Availability ──────────────────────────────────────────────
@@ -357,3 +363,210 @@ function esc(str) {
 
 function pad(n)      { return String(n).padStart(2, '0') }
 function toDateStr(d){ return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}` }
+
+// ── Content Tab ────────────────────────────────────────────────
+let contentDays   = []
+let pendingPhotos = {}  // dayId → uploaded public URL
+let contentLoaded = false
+
+async function loadContentDays() {
+  const { data, error } = await sb
+    .from('experience_days')
+    .select('*')
+    .order('sort_order')
+  if (!error && data) contentDays = data
+}
+
+function renderContentTab() {
+  const editor = document.getElementById('content-editor')
+  if (!editor) return
+
+  const sections = [
+    { label: 'Day 1 — Shared by Both Plans', filter: d => d.show_for === 'both' },
+    { label: '3-Day Immersion',              filter: d => d.show_for === '3'    },
+    { label: '5-Day Immersion',              filter: d => d.show_for === '5'    },
+  ]
+
+  editor.innerHTML = sections.map(sec => {
+    const days = contentDays.filter(sec.filter)
+    if (!days.length) return ''
+    return `
+      <div class="content-section">
+        <div class="content-section-title">${sec.label}</div>
+        ${days.map(buildDayCard).join('')}
+      </div>`
+  }).join('')
+
+  contentDays.forEach(day => attachDayCard(day.id))
+}
+
+function buildDayCard(day) {
+  const paras    = (day.paragraphs || [])
+  const rawSrc   = day.photo_url || ''
+  const photoSrc = rawSrc.startsWith('http') ? rawSrc : (rawSrc ? '../' + rawSrc : '')
+
+  const parasHtml = paras.map((p, i) => `
+    <div class="para-row" data-index="${i}">
+      <textarea class="para-textarea">${esc(p)}</textarea>
+      <button class="para-remove" onclick="removeParagraph('${day.id}', this)" title="Remove">×</button>
+    </div>`).join('')
+
+  const photoHtml = photoSrc
+    ? `<img class="photo-preview" id="preview-${day.id}" src="${photoSrc}" alt="">`
+    : `<div class="photo-placeholder" id="preview-${day.id}">No photo yet</div>`
+
+  return `
+    <div class="day-card" id="day-card-${day.id}">
+      <div class="day-card-head">
+        <span class="day-badge">Day ${day.day_number}</span>
+        <span class="day-card-title-preview">${esc(day.title)}</span>
+      </div>
+      <div class="day-card-body">
+
+        <div class="content-field">
+          <label>Day Title</label>
+          <input type="text" class="content-input" id="title-${day.id}" value="${esc(day.title)}">
+        </div>
+
+        <div class="content-field">
+          <label>Paragraphs</label>
+          <div class="paragraphs-list" id="paras-${day.id}">${parasHtml}</div>
+          <button class="btn-add-para" onclick="addParagraph('${day.id}')">+ Add Paragraph</button>
+        </div>
+
+        <div class="content-field">
+          <label>Photo</label>
+          <div class="photo-drop-zone" id="drop-${day.id}">
+            ${photoHtml}
+            <div class="drop-hint">Drop image here or click to upload</div>
+            <input type="file" accept="image/*" id="file-${day.id}" style="display:none">
+          </div>
+          <div class="photo-status" id="photo-status-${day.id}"></div>
+        </div>
+
+        <div class="day-card-actions">
+          <button class="btn-save" onclick="saveDayCard('${day.id}')">Save Changes</button>
+          <span class="save-feedback" id="feedback-${day.id}" style="display:none">Saved ✓</span>
+        </div>
+
+      </div>
+    </div>`
+}
+
+function attachDayCard(dayId) {
+  const zone  = document.getElementById(`drop-${dayId}`)
+  const input = document.getElementById(`file-${dayId}`)
+  if (!zone || !input) return
+
+  zone.addEventListener('click', () => input.click())
+
+  input.addEventListener('change', e => {
+    const file = e.target.files[0]
+    if (file) handlePhotoFile(dayId, file)
+  })
+
+  zone.addEventListener('dragover', e => {
+    e.preventDefault()
+    zone.classList.add('drag-over')
+  })
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'))
+  zone.addEventListener('drop', e => {
+    e.preventDefault()
+    zone.classList.remove('drag-over')
+    const file = e.dataTransfer.files[0]
+    if (file && file.type.startsWith('image/')) handlePhotoFile(dayId, file)
+  })
+}
+
+async function handlePhotoFile(dayId, file) {
+  // Immediate preview
+  const reader = new FileReader()
+  reader.onload = e => {
+    let preview = document.getElementById(`preview-${dayId}`)
+    if (preview.tagName !== 'IMG') {
+      const img = document.createElement('img')
+      img.className = 'photo-preview'
+      img.id = `preview-${dayId}`
+      preview.replaceWith(img)
+      preview = img
+    }
+    preview.src = e.target.result
+  }
+  reader.readAsDataURL(file)
+
+  // Upload to Supabase Storage
+  const status = document.getElementById(`photo-status-${dayId}`)
+  status.textContent = 'Uploading…'
+  status.style.color = 'var(--text-muted)'
+
+  const ext  = (file.name.split('.').pop() || 'jpg').toLowerCase()
+  const path = `${dayId}.${ext}`
+
+  const { error } = await sb.storage
+    .from('experience-photos')
+    .upload(path, file, { upsert: true })
+
+  if (error) {
+    status.textContent = 'Upload failed — try again.'
+    status.style.color = 'var(--terracotta)'
+    return
+  }
+
+  const { data: urlData } = sb.storage.from('experience-photos').getPublicUrl(path)
+  pendingPhotos[dayId]    = urlData.publicUrl
+  status.textContent      = '✓ Photo ready — click Save Changes to apply.'
+  status.style.color      = 'var(--sage)'
+}
+
+function addParagraph(dayId) {
+  const list = document.getElementById(`paras-${dayId}`)
+  const row  = document.createElement('div')
+  row.className = 'para-row'
+  row.innerHTML = `
+    <textarea class="para-textarea" placeholder="New paragraph…"></textarea>
+    <button class="para-remove" onclick="removeParagraph('${dayId}', this)" title="Remove">×</button>`
+  list.appendChild(row)
+  row.querySelector('textarea').focus()
+}
+
+function removeParagraph(dayId, btn) {
+  btn.closest('.para-row').remove()
+}
+
+async function saveDayCard(dayId) {
+  const title = document.getElementById(`title-${dayId}`).value.trim()
+  const paragraphs = Array.from(
+    document.querySelectorAll(`#paras-${dayId} .para-textarea`)
+  ).map(t => t.value.trim()).filter(Boolean)
+
+  const updates = { title, paragraphs, updated_at: new Date().toISOString() }
+  if (pendingPhotos[dayId]) updates.photo_url = pendingPhotos[dayId]
+
+  const { error } = await sb
+    .from('experience_days')
+    .update(updates)
+    .eq('id', dayId)
+
+  const feedback = document.getElementById(`feedback-${dayId}`)
+  if (!error) {
+    const day = contentDays.find(d => d.id === dayId)
+    if (day) {
+      day.title      = title
+      day.paragraphs = paragraphs
+      if (updates.photo_url) day.photo_url = updates.photo_url
+    }
+    const titlePreview = document.querySelector(`#day-card-${dayId} .day-card-title-preview`)
+    if (titlePreview) titlePreview.textContent = title
+
+    if (pendingPhotos[dayId]) {
+      delete pendingPhotos[dayId]
+      const status = document.getElementById(`photo-status-${dayId}`)
+      if (status) status.textContent = ''
+    }
+
+    feedback.style.display = 'inline'
+    setTimeout(() => { feedback.style.display = 'none' }, 2500)
+  } else {
+    alert('Save failed. Please try again.')
+  }
+}
