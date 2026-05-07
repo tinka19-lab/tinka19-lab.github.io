@@ -712,26 +712,6 @@ nav#main-nav.scrolled .goog-te-gadget select {
   box-shadow: 0 8px 48px rgba(123,50,14,0.1);
 }
 
-.pricing-card.self-guided-card {
-  background: #e8ede6;
-  border-color: var(--sage);
-}
-
-.pricing-group-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--brown-mid);
-  margin-bottom: 12px;
-  padding-left: 2px;
-}
-
-.pricing-group-label.in-person {
-  grid-column: 2 / 4;
-}
-
 .pricing-tag {
   display: inline-block;
   font-size: 10px;
@@ -743,7 +723,7 @@ nav#main-nav.scrolled .goog-te-gadget select {
   margin-bottom: 24px;
 }
 
-.pricing-tag.self-guided { background: var(--sage); color: #fff; }
+.pricing-tag.self-guided { background: rgba(140,153,134,0.15); color: var(--sage); }
 .pricing-tag.transformative { background: var(--terracotta); color: #fff; }
 
 .pricing-name {
