@@ -723,7 +723,7 @@ nav#main-nav.scrolled .goog-te-gadget select {
   margin-bottom: 24px;
 }
 
-.pricing-tag.self-guided { background: var(--sage); color: #fff; }
+.pricing-tag.self-guided { background: var(--sand); color: var(--brown-dark); font-weight: 600; }
 .pricing-tag.transformative { background: var(--terracotta); color: #fff; }
 
 .pricing-card.self-guided-card {
