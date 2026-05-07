@@ -6,6 +6,37 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// ════════════════════════════════════════════════════
+// LANGUAGE
+// ════════════════════════════════════════════════════
+const PAGE_LANG = window.PAGE_LANG || (document.documentElement.lang === 'de' ? 'de' : 'en');
+const IS_DE     = PAGE_LANG === 'de';
+
+// ── Load & apply page content from Supabase ─────────
+(async () => {
+  const { data } = await sb.from('page_content').select('key,value').eq('lang', PAGE_LANG);
+  if (!data || !data.length) return;
+  const c = {};
+  data.forEach(r => { c[r.key] = r.value; });
+
+  document.querySelectorAll('[data-ck]').forEach(el => {
+    const val = c[el.dataset.ck];
+    if (!val) return;
+    const tag = el.tagName;
+    // Headings may contain line breaks stored as \n
+    if (tag === 'H1' || tag === 'H2' || tag === 'H3' || tag === 'H4') {
+      el.innerHTML = escHtmlContent(val).replace(/\n/g, '<br>');
+    } else {
+      el.textContent = val;
+    }
+  });
+})();
+
+function escHtmlContent(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 // ── Section-aware nav ──────────────────────────────
 const nav = document.getElementById('main-nav');
 
@@ -84,8 +115,14 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 });
 
 // ── Date picker ──────────────────────────────────────
-const MONTHS   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const WEEKDAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+const MONTHS   = IS_DE
+  ? ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
+  : ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const WEEKDAYS = IS_DE
+  ? ['So','Mo','Di','Mi','Do','Fr','Sa']
+  : ['Su','Mo','Tu','We','Th','Fr','Sa'];
+const DATE_LOCALE   = IS_DE ? 'de-AT' : 'en-GB';
+const DP_EMPTY_TEXT = IS_DE ? 'Verfügbares Datum auswählen' : 'Select an available date to begin';
 
 const STRIPE_LINKS = {
   3: 'https://buy.stripe.com/9B6aEW4659AQbc9bFr5wI01',
@@ -173,11 +210,11 @@ function createCalendar(ids) {
       const e = new Date(selected + 'T00:00:00');
       e.setDate(e.getDate() + duration - 1);
       info.textContent =
-        s.toLocaleDateString('en-GB', { day:'numeric', month:'short' }) +
+        s.toLocaleDateString(DATE_LOCALE, { day:'numeric', month:'short' }) +
         ' → ' +
-        e.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+        e.toLocaleDateString(DATE_LOCALE, { day:'numeric', month:'short', year:'numeric' });
     } else {
-      info.textContent = 'Select an available date to begin';
+      info.textContent = DP_EMPTY_TEXT;
     }
   }
 
@@ -256,7 +293,9 @@ function showDpStep(n) {
 document.querySelectorAll('.open-dp-modal').forEach(btn => {
   btn.addEventListener('click', () => {
     const days  = parseInt(btn.dataset.days);
-    const label = days === 3 ? '3-Day Immersion' : '5-Day Immersion';
+    const label = IS_DE
+      ? (days === 3 ? '3-Tages-Immersion' : '5-Tages-Immersion')
+      : (days === 3 ? '3-Day Immersion'   : '5-Day Immersion');
     modalCal.setDuration(days);
     document.getElementById('dp-step1-next').disabled = true;
     document.getElementById('dp-modal-package').textContent = label;
@@ -270,7 +309,7 @@ document.querySelectorAll('.open-dp-modal').forEach(btn => {
 document.getElementById('dp-step1-next').addEventListener('click', () => {
   const { date, duration } = modalCal.getSelected();
   const label = duration === 3 ? '3-Day Immersion' : '5-Day Immersion';
-  const dateFormatted = new Date(date + 'T00:00:00').toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  const dateFormatted = new Date(date + 'T00:00:00').toLocaleDateString(DATE_LOCALE, { day:'numeric', month:'long', year:'numeric' });
   document.getElementById('dp-step2-label').textContent = label;
   document.getElementById('modal-hidden-package').value = label;
   document.getElementById('modal-hidden-date').value    = dateFormatted;
@@ -441,7 +480,10 @@ function renderExperienceTimeline(days) {
     .map(day => {
       const reverse = day.day_number % 2 === 0;
       const num     = String(day.day_number).padStart(2, '0');
-      const paras   = (day.paragraphs || []).map(p => `<p>${escHtml(p)}</p>`).join('');
+      // Use German fields when on DE page, fall back to English if not yet translated
+      const title   = (IS_DE && day.title_de)      ? day.title_de      : day.title;
+      const paras   = (IS_DE && day.paragraphs_de) ? day.paragraphs_de : (day.paragraphs || []);
+      const parasHtml = paras.map(p => `<p>${escHtml(p)}</p>`).join('');
       const imgHtml = day.photo_url
         ? `<img src="${escHtml(day.photo_url)}" alt="${escHtml(day.photo_alt || '')}" loading="lazy">`
         : '';
@@ -449,8 +491,8 @@ function renderExperienceTimeline(days) {
         <div class="timeline-item ${reverse ? 'reverse' : ''} reveal" data-day="${day.day_number}" data-show="${day.show_for}">
           <div class="timeline-text">
             <div class="day-number">${num}</div>
-            <div class="day-title">${escHtml(day.title)}</div>
-            ${paras}
+            <div class="day-title">${escHtml(title)}</div>
+            ${parasHtml}
           </div>
           <div class="timeline-image">${imgHtml}</div>
         </div>`;
@@ -489,13 +531,3 @@ if (carouselTrack) {
   setInterval(() => goTo(current + 1), 5000);
 }
 
-// ── Google Translate ─────────────────────────────────
-function googleTranslateElementInit() {
-  const opts = {
-    pageLanguage: 'en',
-    includedLanguages: 'de,en',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  };
-  new google.translate.TranslateElement(opts, 'google_translate_element_nav');
-  new google.translate.TranslateElement(opts, 'google_translate_element_footer');
-}

@@ -71,13 +71,17 @@
       </span>
     </a>
     <ul class="nav-links">
-      <li><a href="#experience">The Experience</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#hotels">Hotels</a></li>
-      <li><a href="#about">About Tina</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://calendly.com/tina-intro-call/intro-conversation" target="_blank" class="nav-cta">Book a Free Call</a></li>
-      <li><div id="google_translate_element_nav"></div></li>
+      <li><a href="#experience" data-ck="nav.experience">The Experience</a></li>
+      <li><a href="#pricing" data-ck="nav.pricing">Pricing</a></li>
+      <li><a href="#hotels" data-ck="nav.hotels">Hotels</a></li>
+      <li><a href="#about" data-ck="nav.about">About Tina</a></li>
+      <li><a href="#faq" data-ck="nav.faq">FAQ</a></li>
+      <li><a href="https://calendly.com/tina-intro-call/intro-conversation" target="_blank" class="nav-cta" data-ck="nav.cta">Book a Free Call</a></li>
+      <li class="lang-toggle">
+        <span class="lang-active">EN</span>
+        <span class="lang-sep">|</span>
+        <a href="de.html" class="lang-link">DE</a>
+      </li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -87,12 +91,17 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-close" id="mobile-close">×</button>
-    <a href="#experience"  class="mobile-link">The Experience</a>
-    <a href="#pricing"     class="mobile-link">Pricing</a>
-    <a href="#hotels"      class="mobile-link">Hotels</a>
-    <a href="#about"       class="mobile-link">About Tina</a>
-    <a href="#faq"         class="mobile-link">FAQ</a>
-    <a href="https://calendly.com/tina-intro-call/intro-conversation" target="_blank">Book a Free Call</a>
+    <a href="#experience"  class="mobile-link" data-ck="nav.experience">The Experience</a>
+    <a href="#pricing"     class="mobile-link" data-ck="nav.pricing">Pricing</a>
+    <a href="#hotels"      class="mobile-link" data-ck="nav.hotels">Hotels</a>
+    <a href="#about"       class="mobile-link" data-ck="nav.about">About Tina</a>
+    <a href="#faq"         class="mobile-link" data-ck="nav.faq">FAQ</a>
+    <a href="https://calendly.com/tina-intro-call/intro-conversation" target="_blank" data-ck="nav.cta">Book a Free Call</a>
+    <div class="lang-toggle lang-toggle-mobile">
+      <span class="lang-active">EN</span>
+      <span class="lang-sep">|</span>
+      <a href="de.html" class="lang-link">DE</a>
+    </div>
   </div>
 
   <!-- ════════════════════ S1 HERO ════════════════════ -->
@@ -100,15 +109,15 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="label">Vienna · Private · By Application Only</span>
-      <h1>Where two become<br>one again.</h1>
-      <p class="hero-subhead">
+      <span class="label" data-ck="hero.label">Vienna · Private · By Application Only</span>
+      <h1 data-ck="hero.h1">Where two become<br>one again.</h1>
+      <p class="hero-subhead" data-ck="hero.subhead">
         A fully private 3 to 5 day Tantric immersion in Vienna,<br>
         designed exclusively for you as a couple.
       </p>
       <div class="hero-buttons">
-        <a href="#booking"    class="btn-primary">Reserve Your Dates</a>
-        <a href="#experience" class="btn-secondary on-dark">Explore the Experience</a>
+        <a href="#booking"    class="btn-primary" data-ck="hero.btn_primary">Reserve Your Dates</a>
+        <a href="#experience" class="btn-secondary on-dark" data-ck="hero.btn_secondary">Explore the Experience</a>
       </div>
     </div>
     <div class="scroll-chevron" onclick="document.getElementById('invitation').scrollIntoView({behavior:'smooth'})">
@@ -121,17 +130,17 @@
   <!-- ════════════════════ S2 OPENING STATEMENT ════════════════════ -->
   <section id="invitation" data-theme="light">
     <div class="container-narrow" style="text-align:center;">
-      <span class="label reveal">An Invitation</span>
-      <h2 class="reveal">This is not a retreat.<br>It is a return.</h2>
+      <span class="label reveal" data-ck="invitation.label">An Invitation</span>
+      <h2 class="reveal" data-ck="invitation.h2">This is not a retreat.<br>It is a return.</h2>
       <div style="margin-top:32px;">
-        <p class="reveal">Most couples arrive at intimacy through habit — repeating patterns that once felt alive and have slowly grown quieter. Not because love has faded. Because no one ever taught them how to keep deepening it.</p>
-        <p class="reveal">The Private Tantra Couples Immersion is a fully curated 3 to 5 day experience in Vienna, created for couples who are ready to move beyond the surface of their connection. Into genuine presence. Into erotic aliveness. Into the kind of intimacy that continues long after you return home.</p>
-        <p class="reveal">Whether you are newly together or have shared decades — this experience meets you exactly where you are.</p>
+        <p class="reveal" data-ck="invitation.p1">Most couples arrive at intimacy through habit — repeating patterns that once felt alive and have slowly grown quieter. Not because love has faded. Because no one ever taught them how to keep deepening it.</p>
+        <p class="reveal" data-ck="invitation.p2">The Private Tantra Couples Immersion is a fully curated 3 to 5 day experience in Vienna, created for couples who are ready to move beyond the surface of their connection. Into genuine presence. Into erotic aliveness. Into the kind of intimacy that continues long after you return home.</p>
+        <p class="reveal" data-ck="invitation.p3">Whether you are newly together or have shared decades — this experience meets you exactly where you are.</p>
       </div>
       <div class="divider reveal"></div>
       <blockquote class="pull-quote reveal">
-        "This work is not about fixing what is broken.<br>It is about remembering what was always there."
-        <cite>— Tina Koestler</cite>
+        <span data-ck="invitation.blockquote">"This work is not about fixing what is broken.<br>It is about remembering what was always there."</span>
+        <cite data-ck="invitation.cite">— Tina Koestler</cite>
       </blockquote>
     </div>
   </section>
@@ -140,9 +149,9 @@
   <section id="experience" data-theme="light">
     <div class="container">
       <div class="experience-header reveal">
-        <span class="label">Your Journey</span>
-        <h2>Five Days. One Transformation.</h2>
-        <p>Each day is thoughtfully sequenced — building on what came before, and preparing you for what comes next. Shorter stays of 3 days are available and will be curated accordingly.</p>
+        <span class="label" data-ck="experience.label">Your Journey</span>
+        <h2 data-ck="experience.h2">Five Days. One Transformation.</h2>
+        <p data-ck="experience.p">Each day is thoughtfully sequenced — building on what came before, and preparing you for what comes next. Shorter stays of 3 days are available and will be curated accordingly.</p>
         <div style="display:flex; gap:12px; justify-content:center; margin-top:28px;" id="journey-toggle">
           <button class="dp-dur-btn" data-journey="3" style="max-width:120px; padding:10px 20px;">3 Days</button>
           <button class="dp-dur-btn active" data-journey="5" style="max-width:120px; padding:10px 20px;">5 Days</button>
@@ -246,7 +255,7 @@
 
       </div>
 
-      <p class="timeline-note reveal">
+      <p class="timeline-note reveal" data-ck="experience.timeline_note">
         "Shorter stays of 3 days are available and carefully curated to honour the most essential arc of the journey. Contact me to discuss what feels right for you."
       </p>
     </div>
@@ -257,65 +266,65 @@
   <section id="pricing" data-theme="dark">
     <div class="container">
       <div class="pricing-header reveal">
-        <span class="label">Investment</span>
-        <h2>Choose Your Experience</h2>
-        <p class="body-small">Accommodation is shown as a separate add-on below — both tiers are available with or without hotel. Pricing shown is for the experience service only.</p>
+        <span class="label" data-ck="pricing.label">Investment</span>
+        <h2 data-ck="pricing.h2">Choose Your Experience</h2>
+        <p class="body-small" data-ck="pricing.note">Accommodation is shown as a separate add-on below — both tiers are available with or without hotel. Pricing shown is for the experience service only.</p>
       </div>
 
       <div class="pricing-cards">
 
         <!-- Tier 1 — The Sensory Ritual -->
         <div class="pricing-card reveal">
-          <span class="pricing-tag self-guided">Self-Guided</span>
-          <div class="pricing-name">Sensuality Package</div>
-          <div class="pricing-price">€497</div>
-          <p class="pricing-description">For couples who want to begin this journey in their own way and their own time. Bring the essence of the immersion into your home with a curated sensory experience.</p>
+          <span class="pricing-tag self-guided" data-ck="pricing.t1.tag">Self-Guided</span>
+          <div class="pricing-name" data-ck="pricing.t1.name">Sensuality Package</div>
+          <div class="pricing-price" data-ck="pricing.t1.price">€497</div>
+          <p class="pricing-description" data-ck="pricing.t1.desc">For couples who want to begin this journey in their own way and their own time. Bring the essence of the immersion into your home with a curated sensory experience.</p>
           <ul class="pricing-features">
-            <li>Curated Tantric Wellness Box — premium gifts chosen to open your senses and deepen your connection, valued at €350</li>
-            <li>Self-Guided Retreat: video recordings and guided practices, tasks and assignments to guide you through Tantric intimacy practices</li>
-            <li>Lovers' Ritual Guide — a beautifully curated companion to take home and continue your journey</li>
-            <li>Can be complemented with the Photography Add-On, and optionally with hotel accommodation (see below)</li>
+            <li data-ck="pricing.t1.f1">Curated Tantric Wellness Box — premium gifts chosen to open your senses and deepen your connection, valued at €350</li>
+            <li data-ck="pricing.t1.f2">Self-Guided Retreat: video recordings and guided practices, tasks and assignments to guide you through Tantric intimacy practices</li>
+            <li data-ck="pricing.t1.f3">Lovers' Ritual Guide — a beautifully curated companion to take home and continue your journey</li>
+            <li data-ck="pricing.t1.f4">Can be complemented with the Photography Add-On, and optionally with hotel accommodation (see below)</li>
           </ul>
-          <a href="#booking" class="btn-secondary">Reserve Sensuality Package</a>
-          <p class="pricing-deposit-note">20% deposit required to confirm. Balance due before arrival.</p>
+          <a href="#booking" class="btn-secondary" data-ck="pricing.t1.btn">Reserve Sensuality Package</a>
+          <p class="pricing-deposit-note" data-ck="pricing.deposit_note">20% deposit required to confirm. Balance due before arrival.</p>
         </div>
 
         <!-- Tier 2 — The Immersion, 3 Days -->
         <div class="pricing-card featured reveal">
-          <span class="pricing-tag transformative">3-Day Immersion</span>
-          <div class="pricing-name">The Immersion</div>
-          <div class="pricing-price">From €950</div>
-          <p class="pricing-price-note">Experience only, without hotel accommodation. Contact me for your personalised quote.</p>
+          <span class="pricing-tag transformative" data-ck="pricing.t2_3.tag">3-Day Immersion</span>
+          <div class="pricing-name" data-ck="pricing.t2_3.name">The Immersion</div>
+          <div class="pricing-price" data-ck="pricing.t2_3.price">From €950</div>
+          <p class="pricing-price-note" data-ck="pricing.t2_3.price_note">Experience only, without hotel accommodation. Contact me for your personalised quote.</p>
           <ul class="pricing-features">
-            <li>Curated Tantric Wellness Box — premium gifts chosen to open your senses and deepen your connection, valued at €350</li>
-            <li>1 × private couples workshop with Tina Koestler (3 hours)</li>
-            <li>Lovers' Ritual Guide — a beautifully curated companion to take home and continue your journey</li>
-            <li>Personalised session design based on your intentions and comfort level</li>
-            <li>Intimacy rituals, opening and closing ceremonies</li>
-            <li>30-minute integration call with me approx. 2 weeks after your immersion</li>
-            <li>Can be complemented with the Photography Add-On, and optionally with hotel accommodation (see below)</li>
+            <li data-ck="pricing.t2_3.f1">Curated Tantric Wellness Box — premium gifts chosen to open your senses and deepen your connection, valued at €350</li>
+            <li data-ck="pricing.t2_3.f2">1 × private couples workshop with Tina Koestler (3 hours)</li>
+            <li data-ck="pricing.t2_3.f3">Lovers' Ritual Guide — a beautifully curated companion to take home and continue your journey</li>
+            <li data-ck="pricing.t2_3.f4">Personalised session design based on your intentions and comfort level</li>
+            <li data-ck="pricing.t2_3.f5">Intimacy rituals, opening and closing ceremonies</li>
+            <li data-ck="pricing.t2_3.f6">30-minute integration call with me approx. 2 weeks after your immersion</li>
+            <li data-ck="pricing.t2_3.f7">Can be complemented with the Photography Add-On, and optionally with hotel accommodation (see below)</li>
           </ul>
-          <button class="btn-primary open-dp-modal" data-days="3">Reserve 3-Day Immersion</button>
-          <p class="pricing-deposit-note">20% deposit required to confirm. Balance due before arrival.</p>
+          <button class="btn-primary open-dp-modal" data-days="3" data-ck="pricing.t2_3.btn">Reserve 3-Day Immersion</button>
+          <p class="pricing-deposit-note" data-ck="pricing.deposit_note">20% deposit required to confirm. Balance due before arrival.</p>
         </div>
 
         <!-- Tier 2 — The Immersion, 5 Days -->
         <div class="pricing-card featured reveal">
-          <span class="pricing-tag transformative">5-Day Immersion</span>
-          <div class="pricing-name">The Immersion</div>
-          <div class="pricing-price">From €1,400</div>
-          <p class="pricing-price-note">Experience only, without hotel accommodation. Contact me for your personalised quote.</p>
+          <span class="pricing-tag transformative" data-ck="pricing.t2_5.tag">5-Day Immersion</span>
+          <div class="pricing-name" data-ck="pricing.t2_5.name">The Immersion</div>
+          <div class="pricing-price" data-ck="pricing.t2_5.price">From €1,400</div>
+          <p class="pricing-price-note" data-ck="pricing.t2_5.price_note">Experience only, without hotel accommodation. Contact me for your personalised quote.</p>
           <ul class="pricing-features">
-            <li>Curated Tantric Wellness Box — premium gifts chosen to open your senses and deepen your connection, valued at €350</li>
-            <li>2 × private couples workshops with Tina Koestler</li>
-            <li>Lovers' Ritual Guide — a beautifully curated companion to take home and continue your journey</li>
-            <li>Personalised session design based on your intentions and comfort level</li>
-            <li>Intimacy rituals, opening and closing ceremonies</li>
-            <li>30-minute integration call with me approx. 2 weeks after your immersion</li>
-            <li>Can be complemented with the Photography Add-On, and optionally with hotel accommodation (see below)</li>
+            <li data-ck="pricing.t2_5.f1">Curated Tantric Wellness Box — premium gifts chosen to open your senses and deepen your connection, valued at €350</li>
+            <li data-ck="pricing.t2_5.f2">2 × private couples workshops with Tina Koestler</li>
+            <li data-ck="pricing.t2_5.f3">Lovers' Ritual Guide — a beautifully curated companion to take home and continue your journey</li>
+            <li data-ck="pricing.t2_5.f4">Personalised session design based on your intentions and comfort level</li>
+            <li data-ck="pricing.t2_5.f5">Intimacy rituals, opening and closing ceremonies</li>
+            <li data-ck="pricing.t2_5.f6">30-minute integration call with me approx. 2 weeks after your immersion</li>
+            <li data-ck="pricing.t2_5.f7">Can be complemented with the Photography Add-On, and optionally with hotel accommodation (see below)</li>
           </ul>
-          <button class="btn-primary open-dp-modal" data-days="5">Reserve 5-Day Immersion</button>
-          <p class="pricing-deposit-note">20% deposit required to confirm. Balance due before arrival.</p>
+          <button class="btn-primary open-dp-modal" data-days="5" data-ck="pricing.t2_5.btn">Reserve 5-Day Immersion</button>
+          <p class="pricing-deposit-note" data-ck="pricing.deposit_note">20% deposit required to confirm. Balance due before arrival.</p>
         </div>
 
       </div>
@@ -351,24 +360,24 @@
       <!-- Content -->
       <div class="photography-inner">
         <div class="photography-content reveal">
-          <span class="label">Optional Add-On</span>
-          <h2>Capture It Forever.</h2>
-          <p>Some experiences deserve to be remembered in images that match the depth of what was felt.</p>
-          <p>As an optional addition to your immersion, I offer access to Patrick Schörg — Vienna's most awarded intimate photographer, and one of the leading boudoir and erotic photographers in the German-speaking world.</p>
+          <span class="label" data-ck="photo.label">Optional Add-On</span>
+          <h2 data-ck="photo.h2">Capture It Forever.</h2>
+          <p data-ck="photo.p1">Some experiences deserve to be remembered in images that match the depth of what was felt.</p>
+          <p data-ck="photo.p2">As an optional addition to your immersion, I offer access to Patrick Schörg — Vienna's most awarded intimate photographer, and one of the leading boudoir and erotic photographers in the German-speaking world.</p>
 
           <div class="photo-options">
             <div class="photo-option">
               <span class="photo-symbol">◆</span>
               <div>
-                <h4>Erotic Couples Photoshoot</h4>
-                <p>A private, fully guided session for you as a couple. Intimate, artful, and completely yours — images you will treasure for the rest of your lives.</p>
+                <h4 data-ck="photo.opt1.title">Erotic Couples Photoshoot</h4>
+                <p data-ck="photo.opt1.p">A private, fully guided session for you as a couple. Intimate, artful, and completely yours — images you will treasure for the rest of your lives.</p>
               </div>
             </div>
             <div class="photo-option">
               <span class="photo-symbol">◆</span>
               <div>
-                <h4>Divine Feminine Photoshoot</h4>
-                <p>A solo experience for the woman — a boudoir session designed to reveal your sensuality, strength and beauty in a way you have perhaps never seen yourself before.</p>
+                <h4 data-ck="photo.opt2.title">Divine Feminine Photoshoot</h4>
+                <p data-ck="photo.opt2.p">A solo experience for the woman — a boudoir session designed to reveal your sensuality, strength and beauty in a way you have perhaps never seen yourself before.</p>
               </div>
             </div>
           </div>
@@ -385,7 +394,7 @@
             <a href="https://boudoirsecrets.at" target="_blank" class="photographer-link">Visit Boudoir Secrets → boudoirsecrets.at</a>
           </div>
 
-          <a href="#booking" class="btn-secondary">Add a Photoshoot to My Booking</a>
+          <a href="#booking" class="btn-secondary" data-ck="photo.btn">Add a Photoshoot to My Booking</a>
         </div>
 
         <div class="photography-image reveal">
@@ -413,9 +422,9 @@
   <section id="hotels" data-theme="light">
     <div class="container">
       <div class="hotels-header reveal">
-        <span class="label">Accommodation</span>
-        <h2>Stay in the Heart of Vienna</h2>
-        <p>I have curated three exceptional hotels in Vienna that match the intimacy and quality of this experience. Add accommodation to either tier at checkout, or arrive with your own arrangements.</p>
+        <span class="label" data-ck="hotels.label">Accommodation</span>
+        <h2 data-ck="hotels.h2">Stay in the Heart of Vienna</h2>
+        <p data-ck="hotels.p">I have curated three exceptional hotels in Vienna that match the intimacy and quality of this experience. Add accommodation to either tier at checkout, or arrive with your own arrangements.</p>
       </div>
 
       <div class="hotels-grid">
@@ -424,10 +433,10 @@
             <img src="Hotels/Le%20M%C3%A9ridien%20Vienna.jpg" alt="Le Méridien Vienna" loading="lazy">
           </div>
           <div class="hotel-content">
-            <span class="hotel-tag">Contemporary Luxury</span>
+            <span class="hotel-tag" data-ck="hotels.meridien.tag">Contemporary Luxury</span>
             <div class="hotel-name">Le Méridien Vienna</div>
             <div class="hotel-stars">★★★★★</div>
-            <p class="hotel-desc">A refined 5-star hotel in the heart of Vienna's 1st district, steps from the Ringstrasse and the Vienna State Opera. Le Méridien blends contemporary design with Viennese grandeur, featuring spacious rooms, a wellness spa, and the kind of effortless elegance that invites couples to slow down and be fully present together.</p>
+            <p class="hotel-desc" data-ck="hotels.meridien.desc">A refined 5-star hotel in the heart of Vienna's 1st district, steps from the Ringstrasse and the Vienna State Opera. Le Méridien blends contemporary design with Viennese grandeur, featuring spacious rooms, a wellness spa, and the kind of effortless elegance that invites couples to slow down and be fully present together.</p>
           </div>
         </div>
 
@@ -436,10 +445,10 @@
             <img src="Hotels/Almanac%20Palais%20Vienna.jpg" alt="Almanac Palais Vienna" loading="lazy">
           </div>
           <div class="hotel-content">
-            <span class="hotel-tag">Intimate Palais</span>
+            <span class="hotel-tag" data-ck="hotels.almanac.tag">Intimate Palais</span>
             <div class="hotel-name">Almanac Palais Vienna</div>
             <div class="hotel-stars">★★★★★</div>
-            <p class="hotel-desc">A boutique luxury hotel housed in a restored 19th-century Palais on Parkring, overlooking the Stadtpark. Almanac Palais Vienna offers intimate, individually designed rooms, a rooftop terrace, and an atmosphere of quiet sophistication — a rare find in the heart of Vienna.</p>
+            <p class="hotel-desc" data-ck="hotels.almanac.desc">A boutique luxury hotel housed in a restored 19th-century Palais on Parkring, overlooking the Stadtpark. Almanac Palais Vienna offers intimate, individually designed rooms, a rooftop terrace, and an atmosphere of quiet sophistication — a rare find in the heart of Vienna.</p>
           </div>
         </div>
 
@@ -448,16 +457,16 @@
             <img src="Hotels/The%20Ritz-Carlton%20Vienna.jpg" alt="The Ritz-Carlton, Vienna" loading="lazy">
           </div>
           <div class="hotel-content">
-            <span class="hotel-tag">Iconic Grandeur</span>
+            <span class="hotel-tag" data-ck="hotels.ritz.tag">Iconic Grandeur</span>
             <div class="hotel-name">The Ritz-Carlton, Vienna</div>
             <div class="hotel-stars">★★★★★</div>
-            <p class="hotel-desc">Vienna's most celebrated address for those who seek the pinnacle of luxury. Located on Schubertring opposite the Stadtpark, The Ritz-Carlton occupies two restored historic palaces. With its legendary service, ornate suites, and Degas Spa, it is the ultimate setting for an unforgettable couples experience.</p>
+            <p class="hotel-desc" data-ck="hotels.ritz.desc">Vienna's most celebrated address for those who seek the pinnacle of luxury. Located on Schubertring opposite the Stadtpark, The Ritz-Carlton occupies two restored historic palaces. With its legendary service, ornate suites, and Degas Spa, it is the ultimate setting for an unforgettable couples experience.</p>
           </div>
         </div>
       </div>
 
-      <p class="hotels-note reveal">By selecting a hotel, you are enquiring about availability for your desired dates. If your preferred hotel is not available, I will personally reach out to offer a suitable alternative. Only upon your agreement will I proceed with making the reservation on your behalf.</p>
-      <p class="hotels-note reveal">Hotel accommodation is an optional add-on. This concierge service may also include additional arrangements such as private transportation, restaurant reservations, theater tickets, or similar services at additional cost.</p>
+      <p class="hotels-note reveal" data-ck="hotels.note1">By selecting a hotel, you are enquiring about availability for your desired dates. If your preferred hotel is not available, I will personally reach out to offer a suitable alternative. Only upon your agreement will I proceed with making the reservation on your behalf.</p>
+      <p class="hotels-note reveal" data-ck="hotels.note2">Hotel accommodation is an optional add-on. This concierge service may also include additional arrangements such as private transportation, restaurant reservations, theater tickets, or similar services at additional cost.</p>
     </div>
   </section>
 
@@ -469,21 +478,21 @@
           <img src="Photos/Tina%20K%20-%20Top-32.jpg" alt="Tina Koestler in green kimono, warm and approachable">
         </div>
         <div class="about-content reveal">
-          <span class="label">Your Guide</span>
-          <h2>Hi, I'm Tina.</h2>
-          <p>For most of my adult life I was very good at being capable. I knew how to hold things together, show up reliably, and make things work — in my career, in relationships, in all the ways that earn respect and keep things running smoothly.</p>
-          <p>What I didn't know was how to truly let someone in. How to be present in my own body. How to receive as fully as I gave.</p>
-          <p>The path back wasn't more doing. It was the body. Breath. Touch. Presence. Learning to trust what I already carried inside me — and learning to share that with another person in a way that actually landed.</p>
-          <p>Today I guide couples through the same return. Not by fixing what is broken. But by creating the conditions where what is already within you — the desire, the tenderness, the depth of connection — can come alive again.</p>
+          <span class="label" data-ck="about.label">Your Guide</span>
+          <h2 data-ck="about.h2">Hi, I'm Tina.</h2>
+          <p data-ck="about.p1">For most of my adult life I was very good at being capable. I knew how to hold things together, show up reliably, and make things work — in my career, in relationships, in all the ways that earn respect and keep things running smoothly.</p>
+          <p data-ck="about.p2">What I didn't know was how to truly let someone in. How to be present in my own body. How to receive as fully as I gave.</p>
+          <p data-ck="about.p3">The path back wasn't more doing. It was the body. Breath. Touch. Presence. Learning to trust what I already carried inside me — and learning to share that with another person in a way that actually landed.</p>
+          <p data-ck="about.p4">Today I guide couples through the same return. Not by fixing what is broken. But by creating the conditions where what is already within you — the desire, the tenderness, the depth of connection — can come alive again.</p>
 
           <ul class="credentials">
-            <li>Tantra Facilitator &amp; Somatic Embodiment Coach</li>
-            <li>Womb Wisdom Teacher</li>
-            <li>Based in Vienna &amp; Bratislava</li>
-            <li>Working with couples, women, and men across Central Europe and online</li>
+            <li data-ck="about.c1">Tantra Facilitator &amp; Somatic Embodiment Coach</li>
+            <li data-ck="about.c2">Womb Wisdom Teacher</li>
+            <li data-ck="about.c3">Based in Vienna &amp; Bratislava</li>
+            <li data-ck="about.c4">Working with couples, women, and men across Central Europe and online</li>
           </ul>
 
-          <a href="https://tinakoestler.com" target="_blank" class="about-link">Learn more about my work → tinakoestler.com</a>
+          <a href="https://tinakoestler.com" target="_blank" class="about-link" data-ck="about.link">Learn more about my work → tinakoestler.com</a>
         </div>
       </div>
     </div>
@@ -493,26 +502,26 @@
   <section id="testimonials" data-theme="dark">
     <div class="container">
       <div class="testimonials-header reveal">
-        <h2>What Couples Say</h2>
+        <h2 data-ck="testimonials.h2">What Couples Say</h2>
       </div>
 
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
           <span class="testimonial-mark">"</span>
-          <p class="testimonial-text">This experience gave us back something we didn't even realise we had lost. We came to Vienna as two people who loved each other. We left as two people who truly knew each other.</p>
-          <p class="testimonial-author">— M. &amp; T., Vienna</p>
+          <p class="testimonial-text" data-ck="testimonials.t1.text">This experience gave us back something we didn't even realise we had lost. We came to Vienna as two people who loved each other. We left as two people who truly knew each other.</p>
+          <p class="testimonial-author" data-ck="testimonials.t1.author">— M. &amp; T., Vienna</p>
         </div>
 
         <div class="testimonial-card reveal">
           <span class="testimonial-mark">"</span>
-          <p class="testimonial-text">Tina created a space that felt completely safe and completely real. Nothing was forced. Everything was invited. We have been together for twelve years and this was the most intimate week of our relationship.</p>
-          <p class="testimonial-author">— S. &amp; A., Bratislava</p>
+          <p class="testimonial-text" data-ck="testimonials.t2.text">Tina created a space that felt completely safe and completely real. Nothing was forced. Everything was invited. We have been together for twelve years and this was the most intimate week of our relationship.</p>
+          <p class="testimonial-author" data-ck="testimonials.t2.author">— S. &amp; A., Bratislava</p>
         </div>
 
         <div class="testimonial-card reveal">
           <span class="testimonial-mark">"</span>
-          <p class="testimonial-text">I came alone for the photoshoot and left with something I cannot fully name. A reclaiming. Tina holds space unlike anyone I have ever worked with.</p>
-          <p class="testimonial-author">— L., Prague</p>
+          <p class="testimonial-text" data-ck="testimonials.t3.text">I came alone for the photoshoot and left with something I cannot fully name. A reclaiming. Tina holds space unlike anyone I have ever worked with.</p>
+          <p class="testimonial-author" data-ck="testimonials.t3.author">— L., Prague</p>
         </div>
       </div>
     </div>
@@ -522,48 +531,48 @@
   <section id="faq" data-theme="light">
     <div class="container">
       <div class="faq-header reveal">
-        <h2>Questions</h2>
+        <h2 data-ck="faq.h2">Questions</h2>
       </div>
 
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-question">Is this experience sexual in nature?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">The immersion explores intimacy, sensuality and erotic energy — but it is not a sexual service. All practices are conducted with full consent, clear boundaries, and within a safe, professional container. Most practices are fully clothed. The yoni-lingam honoring ritual is a sacred practice of reverence, not sexual contact. I will discuss everything with you in your intro call before any booking is confirmed.</div></div>
+          <button class="faq-question"><span data-ck="faq.q1">Is this experience sexual in nature?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a1">The immersion explores intimacy, sensuality and erotic energy — but it is not a sexual service. All practices are conducted with full consent, clear boundaries, and within a safe, professional container. Most practices are fully clothed. The yoni-lingam honoring ritual is a sacred practice of reverence, not sexual contact. I will discuss everything with you in your intro call before any booking is confirmed.</div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">We are beginners — is this right for us?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">Yes. The immersion is designed primarily for beginners and intermediate practitioners. You do not need any prior experience with Tantra. I work entirely at your pace and comfort level. Every session is personalised to where you are.</div></div>
+          <button class="faq-question"><span data-ck="faq.q2">We are beginners — is this right for us?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a2">Yes. The immersion is designed primarily for beginners and intermediate practitioners. You do not need any prior experience with Tantra. I work entirely at your pace and comfort level. Every session is personalised to where you are.</div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">What if we are not sure we are ready?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">Book a free intro call with me. Many couples come to that call with exactly this question — and leave knowing clearly whether this is right for them and when. There is no pressure.</div></div>
+          <button class="faq-question"><span data-ck="faq.q3">What if we are not sure we are ready?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a3">Book a free intro call with me. Many couples come to that call with exactly this question — and leave knowing clearly whether this is right for them and when. There is no pressure.</div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">Can we do 3 days instead of 5?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">Yes. A 3-day experience is available and is carefully curated to honour the most essential arc of the journey. Contact me to discuss what feels right.</div></div>
+          <button class="faq-question"><span data-ck="faq.q4">Can we do 3 days instead of 5?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a4">Yes. A 3-day experience is available and is carefully curated to honour the most essential arc of the journey. Contact me to discuss what feels right.</div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">Is the accommodation mandatory?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">No. Both tiers are available with or without hotel accommodation. If you are already in Vienna or prefer to arrange your own stay, that is absolutely fine.</div></div>
+          <button class="faq-question"><span data-ck="faq.q5">Is the accommodation mandatory?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a5">No. Both tiers are available with or without hotel accommodation. If you are already in Vienna or prefer to arrange your own stay, that is absolutely fine.</div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">How far in advance should we book?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">As this is a fully private, bespoke experience, I take a limited number of immersion couples per month. I recommend enquiring at least 4–6 weeks in advance. Some dates book out further ahead.</div></div>
+          <button class="faq-question"><span data-ck="faq.q6">How far in advance should we book?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a6">As this is a fully private, bespoke experience, I take a limited number of immersion couples per month. I recommend enquiring at least 4–6 weeks in advance. Some dates book out further ahead.</div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">What language is the immersion conducted in?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">Primarily English. Sessions can also be conducted in German if preferred upon prior agreement. Please mention your language preference when enquiring.</div></div>
+          <button class="faq-question"><span data-ck="faq.q7">What language is the immersion conducted in?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a7">Primarily English. Sessions can also be conducted in German if preferred upon prior agreement. Please mention your language preference when enquiring.</div></div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">Is the 20% deposit refundable?<span class="faq-icon"></span></button>
-          <div class="faq-answer"><div class="faq-answer-inner">The deposit secures your dates and covers my preparation time. In the event of cancellation more than 30 days before your start date, 50% of the deposit will be refunded. Cancellations within 30 days are non-refundable. Should I be unable to confirm the booking upon receipt, or need to cancel for any reason, a full 100% refund will of course be issued. Full details provided at booking.</div></div>
+          <button class="faq-question"><span data-ck="faq.q8">Is the 20% deposit refundable?</span><span class="faq-icon"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner" data-ck="faq.a8">The deposit secures your dates and covers my preparation time. In the event of cancellation more than 30 days before your start date, 50% of the deposit will be refunded. Cancellations within 30 days are non-refundable. Should I be unable to confirm the booking upon receipt, or need to cancel for any reason, a full 100% refund will of course be issued. Full details provided at booking.</div></div>
         </div>
       </div>
     </div>
@@ -575,8 +584,8 @@
     <div class="booking-inner container">
 
       <div class="booking-header reveal">
-        <h2>Ready to Begin?</h2>
-        <p>There are two ways to take the next step.<br>Choose what feels right for you.</p>
+        <h2 data-ck="booking.h2">Ready to Begin?</h2>
+        <p data-ck="booking.p">There are two ways to take the next step.<br>Choose what feels right for you.</p>
       </div>
 
       <div class="booking-options reveal">
@@ -584,17 +593,17 @@
         <!-- Option A — Free Call -->
         <div class="booking-option">
           <img src="Photos/Tina%20K%20-%20Top-12.jpg" alt="Tina Koestler" style="width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto 16px;display:block;border:2px solid rgba(255,255,255,0.2);">
-          <h3>Not sure yet?</h3>
-          <span class="option-subtitle">Talk to me first.</span>
-          <p>A free 30-minute intro call — to ask your questions, share your intentions, and feel whether this experience is right for you. No pressure. Just a conversation.</p>
-          <a href="https://calendly.com/tina-intro-call/intro-conversation" target="_blank" class="btn-secondary on-dark">Book Your Free Call</a>
+          <h3 data-ck="booking.opt_a.h3">Not sure yet?</h3>
+          <span class="option-subtitle" data-ck="booking.opt_a.sub">Talk to me first.</span>
+          <p data-ck="booking.opt_a.p">A free 30-minute intro call — to ask your questions, share your intentions, and feel whether this experience is right for you. No pressure. Just a conversation.</p>
+          <a href="https://calendly.com/tina-intro-call/intro-conversation" target="_blank" class="btn-secondary on-dark" data-ck="booking.opt_a.btn">Book Your Free Call</a>
         </div>
 
         <!-- Option B — Reserve with Deposit -->
         <div class="booking-option">
-          <h3>Ready to commit?</h3>
-          <span class="option-subtitle">Reserve with a deposit.</span>
-          <p>Select your preferred dates and reserve your immersion with a 20% deposit. I will confirm within 24 hours and send your full intake form.</p>
+          <h3 data-ck="booking.opt_b.h3">Ready to commit?</h3>
+          <span class="option-subtitle" data-ck="booking.opt_b.sub">Reserve with a deposit.</span>
+          <p data-ck="booking.opt_b.p">Select your preferred dates and reserve your immersion with a 20% deposit. I will confirm within 24 hours and send your full intake form.</p>
 
           <div class="date-picker">
             <div class="dp-header">
@@ -618,8 +627,8 @@
 
       <!-- Inquiry Form -->
       <div class="inquiry-section reveal">
-        <span class="label">Or send a message</span>
-        <h3>Have a specific question?</h3>
+        <span class="label" data-ck="booking.form.label">Or send a message</span>
+        <h3 data-ck="booking.form.h3">Have a specific question?</h3>
 
         <form id="inquiry-form" action="https://formspree.io/f/xlgoogbk" method="POST">
           <div class="form-row">
@@ -672,7 +681,7 @@
       <div class="footer-top">
         <div>
           <img src="logo-sand.svg" alt="Tina Koestler" class="footer-logo-img">
-          <p class="footer-tagline">Tantra Facilitator<br>Embodiment Coach<br>Womb Wisdom Teacher</p>
+          <p class="footer-tagline" data-ck="footer.tagline">Tantra Facilitator<br>Embodiment Coach<br>Womb Wisdom Teacher</p>
         </div>
 
         <div class="footer-col">
@@ -702,9 +711,6 @@
             <li><a href="mailto:koestler.tina@gmail.com">koestler.tina@gmail.com</a></li>
             <li><a href="https://calendly.com/tina-intro-call/intro-conversation" target="_blank">Book a Free Call</a></li>
           </ul>
-          <div class="footer-translate" style="margin-top:20px;">
-            <div id="google_translate_element_footer"></div>
-          </div>
         </div>
       </div>
 
@@ -841,7 +847,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="scripts.js"></script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>

@@ -35,7 +35,8 @@
         <button class="tab-btn" data-tab="bookings">
           Bookings <span id="new-badge" class="badge" style="display:none">0</span>
         </button>
-        <button class="tab-btn" data-tab="content">Content</button>
+        <button class="tab-btn" data-tab="content-en">Content (EN)</button>
+        <button class="tab-btn" data-tab="content-de">Content (DE)</button>
       </nav>
       <button id="logout-btn" class="btn-logout">Sign Out</button>
     </header>
@@ -80,16 +81,29 @@
       </div>
     </div>
 
-    <!-- CONTENT TAB -->
-    <div id="tab-content" class="tab-panel" style="display:none">
+    <!-- CONTENT (EN) TAB -->
+    <div id="tab-content-en" class="tab-panel" style="display:none">
       <div class="panel-inner">
         <div class="panel-header">
           <div>
-            <h2>Experience Content</h2>
-            <p>Edit the day-by-day descriptions and photos. Changes appear on the website immediately after saving.</p>
+            <h2>Content (EN) — English</h2>
+            <p>Edit all page text for the English version. Changes appear on the website immediately after saving.</p>
           </div>
         </div>
-        <div id="content-editor"><div class="loading">Loading content…</div></div>
+        <div id="content-editor-en"><div class="loading">Loading content…</div></div>
+      </div>
+    </div>
+
+    <!-- CONTENT (DE) TAB -->
+    <div id="tab-content-de" class="tab-panel" style="display:none">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2>Content (DE) — Deutsch</h2>
+            <p>Alle Seitentexte der deutschen Version bearbeiten. Änderungen erscheinen nach dem Speichern sofort auf der Website.</p>
+          </div>
+        </div>
+        <div id="content-editor-de"><div class="loading">Inhalte werden geladen…</div></div>
       </div>
     </div>
 
