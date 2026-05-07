@@ -723,8 +723,22 @@ nav#main-nav.scrolled .goog-te-gadget select {
   margin-bottom: 24px;
 }
 
-.pricing-tag.self-guided { background: rgba(140,153,134,0.15); color: var(--sage); }
+.pricing-tag.self-guided { background: var(--sage); color: #fff; }
 .pricing-tag.transformative { background: var(--terracotta); color: #fff; }
+
+.pricing-card.self-guided-card {
+  border: 2px solid var(--sage);
+}
+
+.pricing-card.self-guided-card .btn-secondary {
+  border: 2px solid var(--sage);
+  color: var(--sage);
+}
+
+.pricing-card.self-guided-card .btn-secondary:hover {
+  background: var(--sage);
+  color: #fff;
+}
 
 .pricing-name {
   font-family: 'Playfair Display', serif;
